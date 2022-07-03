@@ -9,12 +9,16 @@
         <entry key="app/src/main/res/drawable-v24/round_back_dark_blue.xml" value="0.2345" />
         <entry key="app/src/main/res/drawable-v24/round_back_primary.xml" value="0.2345" />
         <entry key="app/src/main/res/drawable-v24/show_password.xml" value="0.2345" />
+        <entry key="app/src/main/res/drawable/my_message.xml" value="0.2345" />
         <entry key="app/src/main/res/layout/activity_admin.xml" value="0.27717391304347827" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.27717391304347827" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.27717391304347827" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.27717391304347827" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.27717391304347827" />
+        <entry key="app/src/main/res/layout/activity_scholar.xml" value="0.27717391304347827" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/my_message.xml" value="0.27717391304347827" />
+        <entry key="app/src/main/res/layout/their_message.xml" value="0.27717391304347827" />
       </map>
     </option>
   </component>
