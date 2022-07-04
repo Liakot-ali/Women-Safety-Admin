@@ -17,8 +17,13 @@
         android:theme="@style/Theme.WomenSafetyAdmin"
         tools:targetApi="31">
         <activity
+            android:name=".Complaint"
+            android:exported="false"
+            android:label="Complaint" />
+        <activity
             android:name=".Scholar"
-            android:exported="false" />
+            android:exported="false"
+            android:label="scholar"/>
         <activity
             android:name=".HomeActivity"
             android:exported="false"
@@ -37,7 +42,8 @@
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

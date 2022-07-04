@@ -29,7 +29,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (view.getId()){
             case R.id.scholarid : i= new Intent(this,Scholar.class);startActivity(i); break;
-//            case R.id.policeid : i= new Intent(this,NearbyPolice.class);startActivity(i); break;
+            case R.id.complaintid : i= new Intent(this,Complaint.class);startActivity(i); break;
 
             default:break;
         }
