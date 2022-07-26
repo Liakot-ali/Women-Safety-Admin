@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">WomenSafetyAdmin</string>
+    <dimen name="head_line_text">22sp</dimen>
+    <dimen name="normal_text">20sp</dimen>
+    <dimen name="small_text">16sp</dimen>
+
+    <dimen name="inner_pad">5sp</dimen>
 </resources>

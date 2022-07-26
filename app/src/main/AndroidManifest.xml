@@ -17,13 +17,22 @@
         android:theme="@style/Theme.WomenSafetyAdmin"
         tools:targetApi="31">
         <activity
+            android:name=".Chat.ActivityMessage"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityLegalSupport"
+            android:exported="false" />
+        <activity
+            android:name=".Chat.ActivityChat"
+            android:exported="false" />
+        <activity
             android:name=".Complaint"
             android:exported="false"
             android:label="Complaint" />
         <activity
             android:name=".Scholar"
             android:exported="false"
-            android:label="scholar"/>
+            android:label="scholar" />
         <activity
             android:name=".HomeActivity"
             android:exported="false"

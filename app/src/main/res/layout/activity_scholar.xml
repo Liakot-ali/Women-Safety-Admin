@@ -40,19 +40,19 @@
 
 
         <EditText
-            android:layout_marginStart="16dp"
             android:id="@+id/et_chat_box"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
             android:layout_toStartOf="@+id/btn_chat_send"
+            android:layout_toLeftOf="@+id/btn_chat_send"
             android:background="@android:color/transparent"
             android:hint="Enter Message"
             android:inputType="text"
             android:maxLines="6"
-            tools:ignore="Autofill"
-            android:layout_marginLeft="16dp"
-            android:layout_toLeftOf="@+id/btn_chat_send" />
+            tools:ignore="Autofill" />
 
         <Button
             android:id="@+id/btn_chat_send"

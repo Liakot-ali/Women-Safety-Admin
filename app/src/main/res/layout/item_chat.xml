@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/chatUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/normal_text"
+        android:textColor="@color/black"
+        android:paddingLeft="@dimen/inner_pad"
+        android:maxLines="1"
+        android:text="Name" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/inner_pad"
+        android:weightSum="8">
+
+        <TextView
+            android:id="@+id/chatLastMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textSize="@dimen/small_text"
+            android:text="Last Message" />
+
+        <TextView
+            android:id="@+id/chatTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:paddingLeft="@dimen/inner_pad"
+            android:textSize="@dimen/small_text"
+            android:text="Time" />
+
+    </LinearLayout>
+
+</LinearLayout>

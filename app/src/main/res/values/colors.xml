@@ -9,4 +9,8 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="primary">#01AED8</color>
+    <color name="grey">#D1D1D1</color>
+
+    <color name="me_message">#E1E1E1</color>
+    <color name="other_message">#01AED8</color>
 </resources>
