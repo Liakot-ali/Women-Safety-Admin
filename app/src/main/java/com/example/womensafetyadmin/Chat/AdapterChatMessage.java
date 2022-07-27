@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.womensafetyadmin.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -50,8 +51,8 @@ public class AdapterChatMessage extends RecyclerView.Adapter<AdapterChatMessage.
 
     @Override
     public void onBindViewHolder(@NonNull AdapterChatMessage.ViewHolder holder, int position) {
-
-        if(Objects.equals(msgList.get(position).getStatus(),  msgList.get(position).getAdminId())){
+        String currentAdminId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+        if(Objects.equals(msgList.get(position).getStatus(), currentAdminId)){
             holder.otherLay.setVisibility(View.GONE);
             holder.meLay.setVisibility(View.VISIBLE);
             holder.messageMe.setText(msgList.get(position).getMessage());

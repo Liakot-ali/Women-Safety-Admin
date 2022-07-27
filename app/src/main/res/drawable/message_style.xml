@@ -3,7 +3,6 @@
     <corners android:bottomRightRadius="@dimen/inner_pad"
         android:topLeftRadius="@dimen/inner_pad"
         android:topRightRadius="@dimen/inner_pad"/>
-    <size android:height="40dp" />
     <stroke android:width="1sp"
         android:color="@color/black"/>
     <solid android:color="@color/other_message"/>

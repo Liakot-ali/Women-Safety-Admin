@@ -26,7 +26,7 @@ import java.util.Map;
 
 public class Register extends AppCompatActivity {
     private boolean passwordshowing = false;
-    EditText Username,email,password,mobile;
+    EditText Username, email, password, mobile;
     Button registerBtn;
     TextView signinBtn;
     boolean valid = true;
@@ -38,8 +38,8 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        fAuth=FirebaseAuth.getInstance();
-        fStore=FirebaseFirestore.getInstance();
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
 
         Username = findViewById(R.id.registerName);
         email = findViewById(R.id.registerEmail);
@@ -58,22 +58,22 @@ public class Register extends AppCompatActivity {
                 checkField(password);
                 checkField(mobile);
 
-                if (valid){
-                    fAuth.createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                if (valid) {
+                    fAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                         @Override
                         public void onSuccess(AuthResult authResult) {
                             FirebaseUser user = fAuth.getCurrentUser();
                             Toast.makeText(Register.this, "Account Created", Toast.LENGTH_SHORT).show();
                             DocumentReference df = fStore.collection("Users").document(user.getUid());
-                            Map<String,Object> userInfo = new HashMap<>();
-                            userInfo.put("UserName",Username.getText().toString());
-                            userInfo.put("UserEmail",email.getText().toString());
-                            userInfo.put("MobileNumber",mobile.getText().toString());
+                            Map<String, Object> userInfo = new HashMap<>();
+                            userInfo.put("UserName", Username.getText().toString());
+                            userInfo.put("UserEmail", email.getText().toString());
+                            userInfo.put("MobileNumber", mobile.getText().toString());
 
-                            userInfo.put("isUser","1");
+                            userInfo.put("isUser", "1");
 
                             df.set(userInfo);
-                            startActivity(new Intent(getApplicationContext(),Login.class));
+                            startActivity(new Intent(getApplicationContext(), Login.class));
                             finish();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -89,15 +89,13 @@ public class Register extends AppCompatActivity {
         passwordIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (passwordshowing){
+                if (passwordshowing) {
                     passwordshowing = false;
 
                     password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     passwordIcon.setImageResource(R.drawable.show_password);
-                }
-
-                else{
-                    passwordshowing=true;
+                } else {
+                    passwordshowing = true;
 
                     password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     passwordIcon.setImageResource(R.drawable.hide_password);
@@ -109,15 +107,16 @@ public class Register extends AppCompatActivity {
         signinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),Login.class));
+                startActivity(new Intent(getApplicationContext(), Login.class));
             }
         });
     }
-    public boolean checkField(EditText textField){
-        if (textField.getText().toString().isEmpty()){
+
+    public boolean checkField(EditText textField) {
+        if (textField.getText().toString().isEmpty()) {
             textField.setError("Error");
             valid = false;
-        }else {
+        } else {
             valid = true;
         }
         return valid;

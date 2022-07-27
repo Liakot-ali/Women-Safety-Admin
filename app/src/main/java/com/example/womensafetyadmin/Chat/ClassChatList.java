@@ -4,12 +4,11 @@ public class ClassChatList {
     String userName, lastMessage, sentTime, userId, adminId;
 
     public ClassChatList(){}
-    public ClassChatList(String userName, String lastMessage, String sentTime, String userId, String adminId) {
+    public ClassChatList(String userName, String lastMessage, String sentTime, String userId) {
         this.userName = userName;
         this.lastMessage = lastMessage;
         this.sentTime = sentTime;
         this.userId = userId;
-        this.adminId = adminId;
     }
 
     public String getUserName() {

@@ -24,7 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Login extends AppCompatActivity {
     private boolean passwordshowing = false;
-    EditText email,password;
+    EditText email, password;
     Button loginBtn;
     TextView signupBtn;
     boolean valid = true;
@@ -36,8 +36,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        fAuth=FirebaseAuth.getInstance();
-        fStore=FirebaseFirestore.getInstance();
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
 
         email = findViewById(R.id.LoginEmail);
         password = findViewById(R.id.LoginPassword);
@@ -46,42 +46,40 @@ public class Login extends AppCompatActivity {
 
         final ImageView passwordIcon = findViewById(R.id.passwordIcon);
 
-       loginBtn.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               checkField(email);
-               checkField(password);
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkField(email);
+                checkField(password);
 
-               if (valid){
-                   fAuth.signInWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                       @Override
-                       public void onSuccess(AuthResult authResult) {
-                           Toast.makeText(Login.this, "Loggedin Successfully", Toast.LENGTH_SHORT).show();
-                           checkUserAccessLevel(authResult.getUser().getUid());
-                       }
-                   }).addOnFailureListener(new OnFailureListener() {
-                       @Override
-                       public void onFailure(@NonNull Exception e) {
-                           Toast.makeText(Login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                if (valid) {
+                    fAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                        @Override
+                        public void onSuccess(AuthResult authResult) {
+                            Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
+                            checkUserAccessLevel(authResult.getUser().getUid());
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(Login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
 
-                       }
-                   });
-               }
-           }
-       });
+                        }
+                    });
+                }
+            }
+        });
 
         passwordIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (passwordshowing){
+                if (passwordshowing) {
                     passwordshowing = false;
 
                     password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     passwordIcon.setImageResource(R.drawable.show_password);
-                }
-
-                else{
-                    passwordshowing=true;
+                } else {
+                    passwordshowing = true;
 
                     password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     passwordIcon.setImageResource(R.drawable.hide_password);
@@ -93,35 +91,35 @@ public class Login extends AppCompatActivity {
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),Register.class));
+                startActivity(new Intent(getApplicationContext(), Register.class));
             }
         });
     }
 
     private void checkUserAccessLevel(String uid) {
-        DocumentReference df=fStore.collection("Users").document(uid);
+        DocumentReference df = fStore.collection("Users").document(uid);
         df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-               Log.d("TAG","OnSuccess: " + documentSnapshot.getData());
+                Log.d("TAG", "OnSuccess: " + documentSnapshot.getData());
 
-               if (documentSnapshot.getString("isAdmin") != null){
-                 startActivity(new Intent(getApplicationContext(),Admin.class));
-                 finish();
+                if (documentSnapshot.getString("isAdmin") != null) {
+                    startActivity(new Intent(getApplicationContext(), Admin.class));
+                    finish();
                 }
-               if (documentSnapshot.getString("isUser") != null){
-                   startActivity(new Intent(getApplicationContext(),HomeActivity.class));
-                   finish();
-               }
+                if (documentSnapshot.getString("isUser") != null) {
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    finish();
+                }
             }
         });
     }
 
-    public boolean checkField(EditText textField){
-        if (textField.getText().toString().isEmpty()){
+    public boolean checkField(EditText textField) {
+        if (textField.getText().toString().isEmpty()) {
             textField.setError("Error");
             valid = false;
-        }else {
+        } else {
             valid = true;
         }
         return valid;

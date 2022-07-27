@@ -5,4 +5,5 @@
     <dimen name="small_text">16sp</dimen>
 
     <dimen name="inner_pad">5sp</dimen>
+    <dimen name="message_pad">3sp</dimen>
 </resources>
