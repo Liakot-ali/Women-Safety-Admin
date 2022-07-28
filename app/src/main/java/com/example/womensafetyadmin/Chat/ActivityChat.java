@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,8 +61,10 @@ public class ActivityChat extends AppCompatActivity {
         chatListRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                chatList.clear();
                 for(DataSnapshot snap : snapshot.getChildren()){
                     String userId = snap.getKey();
+                    Log.e("User", userId);
                     ClassChatList chat = new ClassChatList(userId, "This is last message", "22 jul 10:50pm", userId);
                     chatList.add(chat);
                 }

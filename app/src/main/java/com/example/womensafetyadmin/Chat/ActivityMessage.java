@@ -134,6 +134,7 @@ public class ActivityMessage extends AppCompatActivity {
         adminRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                messageList.clear();
                 for(DataSnapshot snap : snapshot.getChildren()){
                     ClassChatMessage msg = snap.getValue(ClassChatMessage.class);
                     messageList.add(msg);

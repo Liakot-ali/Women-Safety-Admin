@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/drawable-v24/hide_password.xml" value="0.279" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/drawable-v24/ic_chat.xml" value="0.278" />
+        <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/drawable/edit_text_style.xml" value="0.279" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/drawable/ic_legal_support.xml" value="0.278" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/drawable/ic_message_send.xml" value="0.278" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/drawable/message_style.xml" value="0.278" />
@@ -12,6 +14,7 @@
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/activity_admin.xml" value="0.27447916666666666" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/activity_chat.xml" value="0.27447916666666666" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/activity_home.xml" value="0.27447916666666666" />
+        <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/activity_login.xml" value="0.27447916666666666" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/activity_message.xml" value="0.27447916666666666" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/activity_scholar.xml" value="0.27447916666666666" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/item_chat.xml" value="0.2734375" />
