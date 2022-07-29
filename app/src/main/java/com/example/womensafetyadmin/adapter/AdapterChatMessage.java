@@ -1,4 +1,4 @@
-package com.example.womensafetyadmin.Chat;
+package com.example.womensafetyadmin.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.womensafetyadmin.Chat.ClassChatMessage;
 import com.example.womensafetyadmin.R;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -21,7 +22,7 @@ public class AdapterChatMessage extends RecyclerView.Adapter<AdapterChatMessage.
     Context context;
     ArrayList<ClassChatMessage> msgList;
 
-    AdapterChatMessage(Context context, ArrayList<ClassChatMessage> msgList){
+    public AdapterChatMessage(Context context, ArrayList<ClassChatMessage> msgList){
         this.context = context;
         this.msgList = msgList;
     }
@@ -58,6 +59,12 @@ public class AdapterChatMessage extends RecyclerView.Adapter<AdapterChatMessage.
             holder.messageMe.setText(msgList.get(position).getMessage());
             holder.timeMe.setText(msgList.get(position).getSentTime());
         }else{
+            if(msgList.get(position).getSentTime().equals("Admin")){
+                holder.message.setBackground(context.getDrawable(R.drawable.message_style_admin));
+//                holder.message.setBackgroundColor(context.getColor(R.color.teal_200));
+            }else{
+                holder.message.setBackground(context.getDrawable(R.drawable.message_style));
+            }
             holder.otherLay.setVisibility(View.VISIBLE);
             holder.meLay.setVisibility(View.GONE);
             holder.message.setText(msgList.get(position).getMessage());

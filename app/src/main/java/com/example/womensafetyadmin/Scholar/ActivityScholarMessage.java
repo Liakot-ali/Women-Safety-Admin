@@ -1,4 +1,4 @@
-package com.example.womensafetyadmin.Chat;
+package com.example.womensafetyadmin.Scholar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +14,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.womensafetyadmin.Chat.ActivityMessage;
+import com.example.womensafetyadmin.Chat.ClassChatMessage;
 import com.example.womensafetyadmin.R;
 import com.example.womensafetyadmin.adapter.AdapterChatMessage;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,11 +30,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import android.widget.Toast;
-
 import java.util.ArrayList;
 
-public class ActivityMessage extends AppCompatActivity {
+public class ActivityScholarMessage extends AppCompatActivity {
     Toolbar toolbar;
     TextView title, emptyText;
     RecyclerView recyclerView;
@@ -46,10 +47,11 @@ public class ActivityMessage extends AppCompatActivity {
     FirebaseDatabase database, userDatabase;
     FirebaseAuth mAuth;
     DatabaseReference adminRef, userRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message);
+        setContentView(R.layout.activity_scholar_message);
         Initialize();
         submit.setEnabled(false);
         messageEditText.addTextChangedListener(new TextWatcher() {
@@ -76,7 +78,7 @@ public class ActivityMessage extends AppCompatActivity {
                 long timeInMills = System.currentTimeMillis();
 //                String date = java.text.DateFormat.getDateTimeInstance().format(new Date());
 
-                ClassChatMessage newMsg = new ClassChatMessage(message, "Admin", userId, adminId, adminId);
+                ClassChatMessage newMsg = new ClassChatMessage(message, "Scholar", userId, adminId, adminId);
                 Log.e("FireBase:", adminRef.toString());
                 adminRef.child(String.valueOf(timeInMills)).setValue(newMsg).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -88,28 +90,27 @@ public class ActivityMessage extends AppCompatActivity {
                             recyclerView.scrollToPosition(messageList.size() - 1);
                             messageEditText.setText("");
                         }else{
-                            Toast.makeText(ActivityMessage.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ActivityScholarMessage.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ActivityMessage.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ActivityScholarMessage.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }
         });
     }
-
     private void Initialize() {
-        toolbar = findViewById(R.id.messageToolbar);
-        title = findViewById(R.id.messageToolbarTitle);
-        emptyText = findViewById(R.id.messageEmptyText);
-        recyclerView = findViewById(R.id.messageRecyclerView);
-        messageEditText = findViewById(R.id.messageEditText);
-        submit = findViewById(R.id.messageSubmitBtn);
+        toolbar = findViewById(R.id.scholarMToolbar);
+        title = findViewById(R.id.scholarMToolbarTitle);
+        emptyText = findViewById(R.id.scholarMEmptyText);
+        recyclerView = findViewById(R.id.scholarMRecyclerView);
+        messageEditText = findViewById(R.id.scholarMEditText);
+        submit = findViewById(R.id.scholarMSubmitBtn);
 
-        manager = new LinearLayoutManager(ActivityMessage.this);
+        manager = new LinearLayoutManager(ActivityScholarMessage.this);
         manager.setStackFromEnd(true);
         manager.setReverseLayout(false);
         recyclerView.setHasFixedSize(true);
@@ -123,7 +124,7 @@ public class ActivityMessage extends AppCompatActivity {
         adminId = mAuth.getUid();
         database = FirebaseDatabase.getInstance("https://womensafetyapp-2af0f-default-rtdb.firebaseio.com/");
 
-        adminRef = database.getReference("Admin").child(userId);
+        adminRef = database.getReference("Scholar").child(userId);
         messageList = new ArrayList<>();
         adminRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -145,10 +146,10 @@ public class ActivityMessage extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(ActivityMessage.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActivityScholarMessage.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        adapter = new AdapterChatMessage(ActivityMessage.this, messageList);
+        adapter = new AdapterChatMessage(ActivityScholarMessage.this, messageList);
         recyclerView.setAdapter(adapter);
 //        recyclerView.scrollToPosition(messageList.size() - 1);
     }

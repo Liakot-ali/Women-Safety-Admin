@@ -9,14 +9,18 @@
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/drawable/ic_legal_support.xml" value="0.278" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/drawable/ic_message_send.xml" value="0.278" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/drawable/message_style.xml" value="0.278" />
+        <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/drawable/message_style_admin.xml" value="0.277" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/drawable/message_style_me.xml" value="0.278" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/drawable/my_message.xml" value="0.279" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/activity_admin.xml" value="0.27447916666666666" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/activity_chat.xml" value="0.27447916666666666" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/activity_home.xml" value="0.27447916666666666" />
+        <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/activity_legal_support.xml" value="0.27447916666666666" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/activity_login.xml" value="0.27447916666666666" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/activity_message.xml" value="0.27447916666666666" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/activity_scholar.xml" value="0.27447916666666666" />
+        <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/activity_scholar_message.xml" value="0.27447916666666666" />
+        <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/activity_support_list.xml" value="0.27447916666666666" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/item_chat.xml" value="0.2734375" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/item_message.xml" value="0.2734375" />
         <entry key="..\:/Our Sourcing/Android App/Chatting App/Admin/app/src/main/res/layout/item_message_me.xml" value="0.27447916666666666" />

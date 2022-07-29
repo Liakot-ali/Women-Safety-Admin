@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.womensafetyadmin.Chat.ActivityChat;
+import com.example.womensafetyadmin.Scholar.ActivityScholarList;
+import com.example.womensafetyadmin.Support.ActivitySupportList;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
     private CardView scholar, complaint, chat, legalSupport;
@@ -35,7 +37,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (view.getId()) {
             case R.id.scholarid:
-                i = new Intent(this, Scholar.class);
+                i = new Intent(this, ActivityScholarList.class);
                 startActivity(i);
                 break;
             case R.id.complaintid:
@@ -47,7 +49,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.legalSupportId:
-                i = new Intent(this, ActivityLegalSupport.class);
+                i = new Intent(this, ActivitySupportList.class);
                 startActivity(i);
 
             default:

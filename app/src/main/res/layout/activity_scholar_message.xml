@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Support.ActivityLegalSupport">
+    tools:context=".Scholar.ActivityScholarMessage">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/supportToolbar"
+        android:id="@+id/scholarMToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -16,10 +16,10 @@
         android:theme="?attr/actionBarTheme">
 
         <TextView
-            android:id="@+id/supportToolbarTitle"
+            android:id="@+id/scholarMToolbarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Legal Support"
+            android:text="User Name"
             android:textColor="@color/white"
             android:textSize="@dimen/head_line_text" />
     </androidx.appcompat.widget.Toolbar>
@@ -37,7 +37,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/supportEmptyText"
+                android:id="@+id/scholarMEmptyText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -45,7 +45,7 @@
                 android:textSize="@dimen/normal_text" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/supportRecyclerView"
+                android:id="@+id/scholarMRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/inner_pad"
@@ -74,7 +74,7 @@
                 android:weightSum="7">
 
                 <EditText
-                    android:id="@+id/supportEditText"
+                    android:id="@+id/scholarMEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -86,7 +86,7 @@
                     android:paddingStart="@dimen/inner_pad" />
 
                 <ImageView
-                    android:id="@+id/supportSubmitBtn"
+                    android:id="@+id/scholarMSubmitBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"

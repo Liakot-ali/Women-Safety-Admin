@@ -1,4 +1,4 @@
-package com.example.womensafetyadmin.Chat;
+package com.example.womensafetyadmin.Support;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,9 +14,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.womensafetyadmin.R;
 import com.example.womensafetyadmin.adapter.AdapterChatMessage;
+import com.example.womensafetyadmin.Chat.ClassChatMessage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -27,11 +29,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import android.widget.Toast;
-
 import java.util.ArrayList;
 
-public class ActivityMessage extends AppCompatActivity {
+public class ActivityLegalSupport extends AppCompatActivity {
     Toolbar toolbar;
     TextView title, emptyText;
     RecyclerView recyclerView;
@@ -46,10 +46,11 @@ public class ActivityMessage extends AppCompatActivity {
     FirebaseDatabase database, userDatabase;
     FirebaseAuth mAuth;
     DatabaseReference adminRef, userRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message);
+        setContentView(R.layout.activity_legal_support);
         Initialize();
         submit.setEnabled(false);
         messageEditText.addTextChangedListener(new TextWatcher() {
@@ -88,13 +89,13 @@ public class ActivityMessage extends AppCompatActivity {
                             recyclerView.scrollToPosition(messageList.size() - 1);
                             messageEditText.setText("");
                         }else{
-                            Toast.makeText(ActivityMessage.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ActivityLegalSupport.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ActivityMessage.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ActivityLegalSupport.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -102,14 +103,14 @@ public class ActivityMessage extends AppCompatActivity {
     }
 
     private void Initialize() {
-        toolbar = findViewById(R.id.messageToolbar);
-        title = findViewById(R.id.messageToolbarTitle);
-        emptyText = findViewById(R.id.messageEmptyText);
-        recyclerView = findViewById(R.id.messageRecyclerView);
-        messageEditText = findViewById(R.id.messageEditText);
-        submit = findViewById(R.id.messageSubmitBtn);
+        toolbar = findViewById(R.id.supportToolbar);
+        title = findViewById(R.id.supportToolbarTitle);
+        emptyText = findViewById(R.id.supportEmptyText);
+        recyclerView = findViewById(R.id.supportRecyclerView);
+        messageEditText = findViewById(R.id.supportEditText);
+        submit = findViewById(R.id.supportSubmitBtn);
 
-        manager = new LinearLayoutManager(ActivityMessage.this);
+        manager = new LinearLayoutManager(ActivityLegalSupport.this);
         manager.setStackFromEnd(true);
         manager.setReverseLayout(false);
         recyclerView.setHasFixedSize(true);
@@ -118,12 +119,13 @@ public class ActivityMessage extends AppCompatActivity {
 
         userId = getIntent().getStringExtra("UserId");
         userName = getIntent().getStringExtra("UserName");
+//        userId = "UserId";
         title.setText(userName);
         mAuth = FirebaseAuth.getInstance();
         adminId = mAuth.getUid();
         database = FirebaseDatabase.getInstance("https://womensafetyapp-2af0f-default-rtdb.firebaseio.com/");
 
-        adminRef = database.getReference("Admin").child(userId);
+        adminRef = database.getReference("LegalSupport").child(userId);
         messageList = new ArrayList<>();
         adminRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -145,10 +147,10 @@ public class ActivityMessage extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(ActivityMessage.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActivityLegalSupport.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        adapter = new AdapterChatMessage(ActivityMessage.this, messageList);
+        adapter = new AdapterChatMessage(ActivityLegalSupport.this, messageList);
         recyclerView.setAdapter(adapter);
 //        recyclerView.scrollToPosition(messageList.size() - 1);
     }
