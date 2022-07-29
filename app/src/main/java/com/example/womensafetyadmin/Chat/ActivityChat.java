@@ -13,12 +13,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.womensafetyadmin.R;
+import com.example.womensafetyadmin.model.ClassUserInfo;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -85,6 +89,19 @@ public class ActivityChat extends AppCompatActivity {
         });
         adapter = new AdapterChatList(ActivityChat.this, chatList);
         recyclerView.setAdapter(adapter);
+    }
 
+    public String getUserName(String userId){
+        String userName = null;
+        DocumentReference userRef = FirebaseFirestore.getInstance().collection("Users").document(userId);
+        userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                ClassUserInfo userInfo = documentSnapshot.toObject(ClassUserInfo.class);
+                assert userInfo != null;
+                Log.e("User", userInfo.getName());
+            }
+        });
+        return userName;
     }
 }
