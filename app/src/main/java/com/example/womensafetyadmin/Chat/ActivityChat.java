@@ -21,9 +21,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -35,6 +37,7 @@ public class ActivityChat extends AppCompatActivity {
     LinearLayoutManager manager;
 
     ArrayList<ClassChatList> chatList;
+    ArrayList<String> nameList;
     AdapterChatList adapter;
 
     FirebaseDatabase database;
@@ -61,15 +64,19 @@ public class ActivityChat extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(manager);
 
+        nameList = new ArrayList<>();
+        nameList = getIntent().getStringArrayListExtra("nameList");
         chatList = new ArrayList<>();
         chatListRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 chatList.clear();
+                int i = 0;
                 for(DataSnapshot snap : snapshot.getChildren()){
                     String userId = snap.getKey();
-                    Log.e("User", userId);
-                    ClassChatList chat = new ClassChatList(userId, "This is last message", "22 jul 10:50pm", userId);
+                    String name = nameList.get(i++);
+                    Log.e("User", name);
+                    ClassChatList chat = new ClassChatList(name, "This is last message", "22 jul 10:50pm", userId);
                     chatList.add(chat);
                 }
                 if(chatList.size() > 0){
@@ -89,19 +96,5 @@ public class ActivityChat extends AppCompatActivity {
         });
         adapter = new AdapterChatList(ActivityChat.this, chatList);
         recyclerView.setAdapter(adapter);
-    }
-
-    public String getUserName(String userId){
-        String userName = null;
-        DocumentReference userRef = FirebaseFirestore.getInstance().collection("Users").document(userId);
-        userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                ClassUserInfo userInfo = documentSnapshot.toObject(ClassUserInfo.class);
-                assert userInfo != null;
-                Log.e("User", userInfo.getName());
-            }
-        });
-        return userName;
     }
 }
