@@ -15,13 +15,19 @@ import com.example.womensafetyadmin.Chat.ActivityChat;
 import com.example.womensafetyadmin.Chat.AdapterChatList;
 import com.example.womensafetyadmin.Chat.ClassChatList;
 import com.example.womensafetyadmin.R;
+import com.example.womensafetyadmin.model.ClassUserInfo;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -34,6 +40,7 @@ public class ActivityScholarList extends AppCompatActivity {
     LinearLayoutManager manager;
 
     ArrayList<ClassChatList> scholarList;
+    ArrayList<String> nameList;
     AdapterScholarList adapter;
 
     FirebaseDatabase database;
@@ -59,17 +66,25 @@ public class ActivityScholarList extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(manager);
 
+        nameList = new ArrayList<>();
+        nameList = getIntent().getStringArrayListExtra("nameList");
+
         scholarList = new ArrayList<>();
         scholarListRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 scholarList.clear();
+                int i = 0;
                 for(DataSnapshot snap : snapshot.getChildren()){
                     String userId = snap.getKey();
-                    Log.e("User", userId);
-                    ClassChatList chat = new ClassChatList(userId, "This is last message", "22 jul 10:50pm", userId);
+                    assert userId != null;
+                    String name = "";
+                    name = nameList.get(i++);
+                    Log.e("User", name);
+                    ClassChatList chat = new ClassChatList(name, "This is last message", "22 jul 10:50pm", userId);
                     scholarList.add(chat);
                 }
+                Log.e("User","ArraySize" + scholarList.size());
                 if(scholarList.size() > 0){
                     recyclerView.setVisibility(View.VISIBLE);
                     emptyText.setVisibility(View.GONE);

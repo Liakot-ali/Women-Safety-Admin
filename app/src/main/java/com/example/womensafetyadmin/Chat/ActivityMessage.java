@@ -156,15 +156,5 @@ public class ActivityMessage extends AppCompatActivity {
         adapter = new AdapterChatMessage(ActivityMessage.this, messageList);
         recyclerView.setAdapter(adapter);
 
-        DocumentReference userRef = FirebaseFirestore.getInstance().collection("Users").document(userId);
-        userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                ClassUserInfo userInfo = documentSnapshot.toObject(ClassUserInfo.class);
-                assert userInfo != null;
-                title.setText(userInfo.getName());
-            }
-        });
-//        recyclerView.scrollToPosition(messageList.size() - 1);
     }
 }

@@ -33,6 +33,7 @@ public class ActivitySupportList extends AppCompatActivity {
     LinearLayoutManager manager;
 
     ArrayList<ClassChatList> supportList;
+    ArrayList<String> nameList;
     AdapterSupportList adapter;
 
     FirebaseDatabase database;
@@ -59,15 +60,19 @@ public class ActivitySupportList extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(manager);
 
+        nameList = new ArrayList<>();
+        nameList = getIntent().getStringArrayListExtra("nameList");
         supportList = new ArrayList<>();
         supportRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 supportList.clear();
+                int i=0;
                 for(DataSnapshot snap : snapshot.getChildren()){
                     String userId = snap.getKey();
                     Log.e("User", userId);
-                    ClassChatList chat = new ClassChatList(userId, "This is last message", "22 jul 10:50pm", userId);
+                    String name = nameList.get(i++);
+                    ClassChatList chat = new ClassChatList(name, "This is last message", "22 jul 10:50pm", userId);
                     supportList.add(chat);
                 }
                 if(supportList.size() > 0){
