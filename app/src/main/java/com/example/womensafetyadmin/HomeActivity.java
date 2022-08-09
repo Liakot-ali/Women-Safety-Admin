@@ -125,6 +125,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                         }
                     });
                 }
+                dialog.setVisibility(View.GONE);
             }
 
             @Override
@@ -134,7 +135,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(HomeActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        dialog.setVisibility(View.GONE);
+
 
         scholar.setOnClickListener(this);
         complaint.setOnClickListener(this);
